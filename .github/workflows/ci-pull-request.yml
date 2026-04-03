@@ -13,9 +13,6 @@ jobs:
       - name: Clonar repositório
         uses: actions/checkout@v3
 
-      - name: Trocar para branch do PR
-        run: git checkout ${{ github.head_ref }}
-
       - name: Instalar Node.js
         uses: actions/setup-node@v3
         with:
