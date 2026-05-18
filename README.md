@@ -1,5 +1,9 @@
 # API REST de Filmes
 
+[![Docker Image](https://badgen.net/docker/pulls/wanessasantana/api-filmes?icon=docker&label=pulls)](https://hub.docker.com/r/wanessasantana/api-filmes)
+[![Docker Size](https://badgen.net/docker/size/wanessasantana/api-filmes?icon=docker&label=size)](https://hub.docker.com/r/wanessasantana/api-filmes)
+
+
 ## Como executar
 
 1. Instale as dependências:
