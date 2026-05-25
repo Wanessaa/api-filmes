@@ -61,7 +61,9 @@ npm run lint
 - [Vagrant](https://www.vagrantup.com/downloads) instalado
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) instalado
 
-### Executar a infraestrutura
+### Box utilizada
+- `hashicorp/bionic64` (Ubuntu 18.04)
+
 
 1. Inicie as VMs:
 ```bash
