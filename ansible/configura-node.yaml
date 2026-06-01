@@ -1,0 +1,34 @@
+---
+- name: Configurar VM2 com a aplicação
+  hosts: vm2
+  become: yes
+
+  tasks:
+    - name: Instalar git
+      apt:
+        name: git
+        state: present
+        update_cache: yes
+
+    - name: Instalar curl
+      apt:
+        name: curl
+        state: present
+
+    - name: Adicionar repositório Node.js 16
+      shell: curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+
+    - name: Instalar Node.js
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Clonar repositório da aplicação
+      git:
+        repo: 'https://github.com/Wanessaa/api-filmes.git'
+        dest: /home/vagrant/api-filmes
+        force: yes
+
+    - name: Instalar dependências do projeto
+      npm:
+        path: /home/vagrant/api-filmes
