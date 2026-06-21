@@ -30,11 +30,14 @@
         name: stress-ng
         state: present
 
+    - name: Baixar script do Netdata
+      get_url:
+        url: https://my-netdata.io/kickstart.sh
+        dest: /tmp/kickstart.sh
+        mode: '0755'
+
     - name: Instalar Netdata via script oficial
-      shell: >
-        bash <(curl -Ss https://my-netdata.io/kickstart.sh)
-        --dont-wait
-        --disable-telemetry
+      shell: bash /tmp/kickstart.sh --dont-wait --disable-telemetry
       args:
         creates: /usr/sbin/netdata
 
