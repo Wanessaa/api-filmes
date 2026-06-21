@@ -30,16 +30,17 @@
         name: stress-ng
         state: present
 
-    - name: Baixar script do Netdata
-      get_url:
-        url: https://my-netdata.io/kickstart.sh
-        dest: /tmp/kickstart.sh
-        mode: '0755'
+    - name: Adicionar repositório do Netdata
+      shell: |
+        curl -fsSL https://packagecloud.io/netdata/netdata/gpgkey | apt-key add -
+        echo "deb https://packagecloud.io/netdata/netdata/ubuntu/ bionic main" > /etc/apt/sources.list.d/netdata.list
+        apt-get update
 
-    - name: Instalar Netdata via script oficial
-      shell: bash /tmp/kickstart.sh --dont-wait --disable-telemetry
-      args:
-        creates: /usr/sbin/netdata
+    - name: Instalar Netdata via apt
+      apt:
+        name: netdata
+        state: present
+        update_cache: yes
 
     - name: Criar diretório de configuração de alertas
       file:
